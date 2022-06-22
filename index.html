@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Знайомство з JS Міндзя</title>
+    <script>
+    	var photos_count = 5;//розміщено у змінні кількість фото, які потрібно відобразити
+    	var currentPhotoIndex = 1; // поміщаємо у змінну штучний номер 1 для поточного фото
+    	function show_next_photo() {//відповідає за перемикання фото
+    		currentPhotoIndex++;//відповідає за нарощення номера фото при кліканні
+    		if (currentPhotoIndex > photos_count) currentPhotoIndex = 1; //якщо доходимо до 5 фотки то починаємо знову з 1, якщо продовжуємо клікати
+    		var element_photo = document.getElementById("current_photo");//отримуємо доступ до картинки за Id
+    		element_photo.src = "photo" + currentPhotoIndex + ".jpg";//змінюємо номер поточної картинки
+    		
+    	}
+    	function add_next_photo() {
+    		var new_image = document.createElement("img");//створив ою'єкт з назвою img
+    		currentPhotoIndex++;
+    		if (currentPhotoIndex > photos_count) currentPhotoIndex = 1; //якщо доходимо до 5 фотки то починаємо знову з 1, якщо продовжуємо клікати
+    		new_image.src = "photo" + currentPhotoIndex + ".jpg";//змінюємо номер поточної картинки
+    		var container_element = document.getElementById("gallery_photo");//дістанься до ід в div
+    		container_element.appendChild(new_image);//додай в div нову картинку
+    	}
+    </script>
+</head>
+<body>
+	<div id="gallery_photo">
+		<img id="current_photo" src="photo1.jpg" />
+	</div>
+	<button onclick="show_next_photo()">Наступне фото</button>
+	<button onclick="add_next_photo()">Додати фото</button>
+</body>
+</html>
